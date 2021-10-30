@@ -18,5 +18,5 @@ FROM api as dev
 WORKDIR /home/api/
 USER root
 COPY --chown=ixpandit:ixpandit ./api ./api
-USER ixpandit
 RUN pip install -r requirements/local.txt
+USER ixpandit
