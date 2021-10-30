@@ -63,7 +63,7 @@ class PokeStats(models.Model):
 
 # the evolution of a pokemon
 class PokeEvolutions(models.Model):
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
+    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="evolutions")
     name = models.CharField(max_length=20)
     order = models.PositiveIntegerField()
 
@@ -73,7 +73,7 @@ class PokeEvolutions(models.Model):
 
 # abilities of a single pokemon is in here
 class PokeAbilities(models.Model):
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
+    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="abilities")
     ability = models.ForeignKey(Abilities, on_delete=models.CASCADE)
     order = models.PositiveIntegerField()
 
@@ -83,7 +83,7 @@ class PokeAbilities(models.Model):
 
 # held items of a single pokemon is in here
 class PokeHeldItems(models.Model):
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
+    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="held_items")
     heldItem = models.ForeignKey(HeldItems, on_delete=models.CASCADE)
     order = models.PositiveIntegerField()
 
@@ -93,7 +93,7 @@ class PokeHeldItems(models.Model):
 
 # types of a single pokemon is in here
 class PokeTypes(models.Model):
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
+    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="types")
     type = models.ForeignKey(Types, on_delete=models.CASCADE)
     order = models.PositiveIntegerField()
 
