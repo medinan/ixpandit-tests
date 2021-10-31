@@ -15,7 +15,16 @@
             <a class="breadcrumb-item" href="/">Home</a>
             <span class="breadcrumb-item active">Pokedex</span>
           </nav>
-
+          <div class="row mb80">
+            <div class="col-sm-4 offset-sm-4">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search pokemon" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary btn-primary" type="button">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row">
             <PokemonCard v-for="adv in pokemons"
                             :name="adv.name"
