@@ -7,9 +7,9 @@ services:
     environment:
       POSTGRES_PASSWORD: ixpandit
       POSTGRES_USER: ixpandit
-      POSTGRES_DB: git
+      POSTGRES_DB: ixpandit
     volumes:
-      - pgdata:/var/lib/postgresql/git-data
+      - ./volumes/postgres:/data
   api:
     build:
       context: ./
@@ -44,8 +44,6 @@ services:
       - ./frontend:/home/frontend/
       - /home/frontend/node_modules
     working_dir: /home/frontend
-    depends_on:
-      - api
     tty: true
     stdin_open: true
 volumes:
