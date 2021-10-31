@@ -1,0 +1,50 @@
+version: '3.6'
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ixpandit
+      POSTGRES_USER: ixpandit
+      POSTGRES_DB: ixpandit
+    volumes:
+      - ./volumes/postgres:/data
+  api:
+    build:
+      context: ./
+      dockerfile: ./api/Dockerfile.local
+      target: dev
+    image: ixpandit/tests/backend/dev
+    command: bash -c "python manage.py migrate && python manage.py loaddata ./fixtures/initial_data.json && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./api/.env
+    volumes:
+      - ./api:/home/api/
+    working_dir: /home/api
+    depends_on:
+      - postgres
+    tty: true
+    stdin_open: true
+
+  web:
+    build:
+      context: ./
+      dockerfile: ./frontend/Dockerfile.local
+      target: web
+    image: ixpandit/tests/frontend/front
+    command: bash -c "yarn dev"
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./frontend/.env
+    volumes:
+      - ./frontend:/home/frontend/
+      - /home/frontend/node_modules
+    working_dir: /home/frontend
+    tty: true
+    stdin_open: true
+volumes:
+  pgdata:

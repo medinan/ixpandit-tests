@@ -1,0 +1,6 @@
+-r base.txt
+-r test.txt
+isort==5.9.1
+black==21.9b0
+drf-yasg==1.20.0
+drf-yasg[validation]
