@@ -26,8 +26,11 @@
                             :abilities="adv.abilities"
                             :image="adv.image"></PokemonCard>
           </div>
-          <div class="row">
-            <button type="submit" class="btn btn-primary pull-right">VER MAS</button>
+          <div class="row align-content-center" v-show="is_more">
+            <div class="col text-center">
+              <button type="submit" class="btn btn-primary" @click="getMorePokemon">VER MAS</button>
+            </div>
+
           </div>
           <!-- /.row -->
         </div>
@@ -45,15 +48,17 @@
     name: "Pokedex",
     components: {PokemonCard},
     mounted: function () {
-      this.getpokemons();
+      this.getPokemon();
     },
     data: function () {
       return {
-        pokemons: []
+        pokemons: [],
+        is_more: false,
+        next_url: null,
       }
     },
     methods: {
-      getpokemons: function () {
+      getPokemon: function () {
         const url = "/api/v1/pokemons/"
         let self = this;
         this.$axios.get(url, {
@@ -62,8 +67,23 @@
         }).then(function (response) {
           console.log(response.data);
           self.pokemons = response.data.results;
+          self.is_more = !(response.data.next  === null);
+          self.next_url = response.data.next;
         })
-      }
+      },
+      getMorePokemon: function () {
+        const url = this.next_url;
+        let self = this;
+        this.$axios.get(url, {
+          dataType: "json",
+          headers: {"Content-type": "application/json"}
+        }).then(function (response) {
+          console.log(response.data);
+          self.pokemons = [].concat(self.pokemons, response.data.results);
+          self.is_more = !(response.data.next  === null);
+          self.next_url = response.data.next;
+        })
+      },
     }
   }
 </script>

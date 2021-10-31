@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-4 col-lg-4">
+  <div class="col-md-3 col-lg-3">
     <div class="listing-row">
       <div class="listing-box-inner">
         <a class="listing-box-image">
