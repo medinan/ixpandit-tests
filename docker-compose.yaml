@@ -16,7 +16,7 @@ services:
       dockerfile: ./api/Dockerfile.local
       target: dev
     image: ixpandit/tests/backend/dev
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python manage.py migrate && python manage.py loaddata ./fixtures/initial_data.json && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     env_file:

@@ -1,5 +1,26 @@
 # ixpandit-tests
-tests for ixpandit
+It asks to develop a web application to search for Pokemons.
+
+![gitflow!](./docs/img/mockup.png "mockup")
+
+The solution must meet the following requirements:
+
+Use for the solution an object-oriented language (PHP, Java or similar) and automatic logic testing (Phpunit, JUnit).
+
+The design of free choice, with the possibility of using a framework.
+
+Check the data via PokeApi (https://pokeapi.co/) from the server (see image).
+
+At a minimum you have to be able to search for Pokemons by partial name.
+
+We will value simplicity and neatness. 
+
+Also additions aimed at improving the quality of the code.
+
+Share the solution in a public repo (Github, Bitbucket) with instructions to 
+lift the application in the Readme. 
+
+Send the repo link to it@ixpandit.com with the contact information.
 
 # USAGE
 
@@ -10,6 +31,19 @@ $ docker-compose build api
 $ docker-compose build web
 $ docker-compose up
 
+```
+
+# User types
+
+### Anonymous
+Anonymous users can only get information from APIs, but cannot make changes
+
+### Admin
+The administrator users have all the permissions to interact with the APIs.
+
+```commandline
+user: admin
+password: admin
 ```
 
 # APIs documentation.
@@ -60,17 +94,12 @@ They come out of the release to which they correspond and merge against it.
 
 # Pending and improvements
 
-1. Support for subcategories.
-2. List of products at user level, with the possibility of managing stock, price, tax.
-3. Support for discounts and promotions.
-4. Product review support.
-5. Improve email templates.
+1. automatic logic testing.
+2. Refactor source data integrations.
+3. Pokemon Card css.
+4. Add pokemon detail.
+5. Add more search methods.
+6. add more pokemon information.
 
-# Proposal for the future
-In the future depending on the growth of traffic in the service, 
-it might be convenient to separate it into three clearly identifiable 
-services Catalog, Event tracking and notifications connected asynchronously.
-
-![gitflow!](./docs/img/microservices.png "proposal")
 
 
