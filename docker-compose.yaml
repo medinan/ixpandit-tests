@@ -28,5 +28,25 @@ services:
       - postgres
     tty: true
     stdin_open: true
+
+  web:
+    build:
+      context: ./
+      dockerfile: ./frontend/Dockerfile.local
+      target: web
+    image: ixpandit/tests/frontend/front
+    command: bash -c "yarn dev"
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./frontend/.env
+    volumes:
+      - ./frontend:/home/frontend/
+      - /home/frontend/node_modules
+    working_dir: /home/frontend
+    depends_on:
+      - api
+    tty: true
+    stdin_open: true
 volumes:
   pgdata:
