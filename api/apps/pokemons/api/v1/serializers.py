@@ -43,10 +43,10 @@ class PokemonTypeSerializer(serializers.ModelSerializer):
 
 
 class PokemonSerializer(serializers.ModelSerializer):
-    evolutions = EvolutionsSerializer(many=True)
-    abilities = PokemonAbilitiesSerializer(many=True)
-    held_items = PokemonHeldItemsSerializer(many=True)
-    types = PokemonTypeSerializer(many=True)
+    evolutions = EvolutionsSerializer(many=True, read_only=True)
+    abilities = PokemonAbilitiesSerializer(many=True, read_only=True)
+    held_items = PokemonHeldItemsSerializer(many=True, read_only=True)
+    types = PokemonTypeSerializer(many=True, read_only=True)
 
     class Meta:
         model = Pokemon
