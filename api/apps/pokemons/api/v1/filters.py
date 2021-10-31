@@ -8,4 +8,4 @@ class PokemonFilterSet(filters.FilterSet):
 
     class Meta:
         model = Pokemon
-        fields = ("name", )
+        fields = ("name",)

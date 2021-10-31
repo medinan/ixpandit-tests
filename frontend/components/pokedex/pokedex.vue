@@ -18,9 +18,9 @@
           <div class="row mb80">
             <div class="col-sm-4 offset-sm-4">
               <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search pokemon" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <input type="text" v-model="search_form.name" class="form-control" placeholder="Search pokemon" aria-label="Recipient's username" aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary btn-primary" type="button">Buscar</button>
+                  <button class="btn btn-outline-secondary btn-primary" type="button" @click="getPokemon">Buscar</button>
                 </div>
               </div>
             </div>
@@ -64,15 +64,20 @@
         pokemons: [],
         is_more: false,
         next_url: null,
+        search_form: {
+          name: null
+        }
       }
     },
     methods: {
       getPokemon: function () {
         const url = "/api/v1/pokemons/"
         let self = this;
+        let params = {name: this.search_form.name}
         this.$axios.get(url, {
           dataType: "json",
-          headers: {"Content-type": "application/json"}
+          headers: {"Content-type": "application/json"},
+          params: params
         }).then(function (response) {
           console.log(response.data);
           self.pokemons = response.data.results;
