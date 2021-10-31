@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # CORS
     'corsheaders',
     'rest_framework',
+    'django_filters',
 
     'apps.pokemons',
 ]
