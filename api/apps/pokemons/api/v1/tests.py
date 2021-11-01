@@ -43,9 +43,11 @@ class PokemonAuthenticatedUser(SimpleAPITestCaseMixin, APITestCase):
 
     def get_data_to_create_object(self):
         return {
-            "name": "Picachu", "poke_id": 152,
-            "height": 350.00, "weight": 450.77,
-            "image": "https://www.imagenes.com/image.png"
+            "name": "Picachu",
+            "poke_id": 152,
+            "height": 350.00,
+            "weight": 450.77,
+            "image": "https://www.imagenes.com/image.png",
         }
 
     def get_data_to_update_object(self):
@@ -61,7 +63,9 @@ class PokemonAuthenticatedUser(SimpleAPITestCaseMixin, APITestCase):
 
     def test_create(self):
         response = self.case_create()
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED, response.__dict__)
+        self.assertEqual(
+            response.status_code, status.HTTP_201_CREATED, response.__dict__
+        )
 
     def test_delete(self):
         response = self.case_delete()
