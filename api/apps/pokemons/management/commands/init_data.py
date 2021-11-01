@@ -37,29 +37,6 @@ def cleanDatabase():
     Pokemon.objects.all().delete()
 
 
-def getEvolution(id):
-    try:
-        species = requests.get(f"{BASE_API}/pokemon-species/{id}/")
-        species = species.json()
-        evol = requests.get(species["evolution_chain"]["url"])
-        evol = evol.json()
-
-        chain = []
-
-        chainSpecies = evol["chain"]
-
-        while chainSpecies:
-            chain.append(chainSpecies["species"]["name"])
-            if chainSpecies["evolves_to"] and len(chainSpecies["evolves_to"]):
-                chainSpecies = chainSpecies["evolves_to"][0]
-            else:
-                chainSpecies = None
-
-        return chain
-    except:
-        return []
-
-
 class Command(BaseCommand):
     help = "Closes the specified poll for voting"
 
