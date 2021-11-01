@@ -26,10 +26,10 @@ Send the repo link to it@ixpandit.com with the contact information.
 
 ```
 $ git clone git@github.com:medinan/ixpandit-tests.git
-$ cd test
+$ cd ixpandit-tests/
 $ docker-compose build api
 $ docker-compose build web
-$ docker-compose up
+$ docker-compose up api web
 
 ```
 
@@ -95,11 +95,10 @@ They come out of the release to which they correspond and merge against it.
 # Pending and improvements
 
 1. automatic logic testing.
-2. Refactor source data integrations.
-3. Pokemon Card css.
-4. Add pokemon detail.
-5. Add more search methods.
-6. add more pokemon information.
+2Pokemon Card css.
+3Add pokemon detail.
+4Add more search methods.
+5add more pokemon information.
 
 
 
