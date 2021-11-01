@@ -9,8 +9,6 @@ from apps.pokemons.models import Pokemon
 class PokemonViewSet(viewsets.ModelViewSet):
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
-    filter_backends = (filters.DjangoFilterBackend, )
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = PokemonFilterSet
-
-

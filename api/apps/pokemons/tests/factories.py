@@ -10,7 +10,6 @@ faker = Faker()
 
 
 class PokemonFactory(factory.django.DjangoModelFactory):
-
     class Meta:
         model = Pokemon
 
