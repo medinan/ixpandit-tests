@@ -8,114 +8,237 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Abilities',
+            name="Abilities",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=20)),
             ],
             options={
-                'verbose_name_plural': 'Abilities',
+                "verbose_name_plural": "Abilities",
             },
         ),
         migrations.CreateModel(
-            name='HeldItems',
+            name="HeldItems",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=20)),
             ],
             options={
-                'verbose_name_plural': 'HeldItems',
+                "verbose_name_plural": "HeldItems",
             },
         ),
         migrations.CreateModel(
-            name='Pokemon',
+            name="Pokemon",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('poke_id', models.PositiveIntegerField()),
-                ('name', models.CharField(max_length=50)),
-                ('height', models.FloatField()),
-                ('weight', models.FloatField()),
-                ('image', models.CharField(max_length=500)),
-                ('created', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("poke_id", models.PositiveIntegerField()),
+                ("name", models.CharField(max_length=50)),
+                ("height", models.FloatField()),
+                ("weight", models.FloatField()),
+                ("image", models.CharField(max_length=500)),
+                ("created", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name_plural': 'Pokemon',
+                "verbose_name_plural": "Pokemon",
             },
         ),
         migrations.CreateModel(
-            name='Types',
+            name="Types",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=20)),
             ],
             options={
-                'verbose_name_plural': 'Types',
+                "verbose_name_plural": "Types",
             },
         ),
         migrations.CreateModel(
-            name='PokeTypes',
+            name="PokeTypes",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('order', models.PositiveIntegerField()),
-                ('pokemon', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='types', to='pokemons.pokemon')),
-                ('type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pokemons.types')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("order", models.PositiveIntegerField()),
+                (
+                    "pokemon",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="types",
+                        to="pokemons.pokemon",
+                    ),
+                ),
+                (
+                    "type",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="pokemons.types"
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'PokeTypes',
+                "verbose_name_plural": "PokeTypes",
             },
         ),
         migrations.CreateModel(
-            name='PokeStats',
+            name="PokeStats",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('base_stat', models.FloatField(default=0)),
-                ('effort', models.FloatField(default=0)),
-                ('name', models.CharField(default='', max_length=20)),
-                ('pokemon', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='stats', to='pokemons.pokemon')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("base_stat", models.FloatField(default=0)),
+                ("effort", models.FloatField(default=0)),
+                ("name", models.CharField(default="", max_length=20)),
+                (
+                    "pokemon",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="stats",
+                        to="pokemons.pokemon",
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'PokeStats',
+                "verbose_name_plural": "PokeStats",
             },
         ),
         migrations.CreateModel(
-            name='PokeHeldItems',
+            name="PokeHeldItems",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('order', models.PositiveIntegerField()),
-                ('heldItem', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pokemons.helditems')),
-                ('pokemon', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='held_items', to='pokemons.pokemon')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("order", models.PositiveIntegerField()),
+                (
+                    "heldItem",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="pokemons.helditems",
+                    ),
+                ),
+                (
+                    "pokemon",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="held_items",
+                        to="pokemons.pokemon",
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'PokeHeldItems',
+                "verbose_name_plural": "PokeHeldItems",
             },
         ),
         migrations.CreateModel(
-            name='PokeEvolutions',
+            name="PokeEvolutions",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20)),
-                ('order', models.PositiveIntegerField()),
-                ('pokemon', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='evolutions', to='pokemons.pokemon')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=20)),
+                ("order", models.PositiveIntegerField()),
+                (
+                    "pokemon",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="evolutions",
+                        to="pokemons.pokemon",
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'PokeEvolutions',
+                "verbose_name_plural": "PokeEvolutions",
             },
         ),
         migrations.CreateModel(
-            name='PokeAbilities',
+            name="PokeAbilities",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('order', models.PositiveIntegerField()),
-                ('ability', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='pokemons.abilities')),
-                ('pokemon', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='abilities', to='pokemons.pokemon')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("order", models.PositiveIntegerField()),
+                (
+                    "ability",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="pokemons.abilities",
+                    ),
+                ),
+                (
+                    "pokemon",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="abilities",
+                        to="pokemons.pokemon",
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'PokeAbilities',
+                "verbose_name_plural": "PokeAbilities",
             },
         ),
     ]
