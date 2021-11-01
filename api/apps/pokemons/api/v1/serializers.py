@@ -1,6 +1,12 @@
 from rest_framework import serializers
 
-from apps.pokemons.models import Pokemon, PokeEvolutions, PokeAbilities, PokeHeldItems, PokeTypes
+from apps.pokemons.models import (
+    Pokemon,
+    PokeEvolutions,
+    PokeAbilities,
+    PokeHeldItems,
+    PokeTypes,
+)
 
 
 class EvolutionsSerializer(serializers.ModelSerializer):
@@ -25,7 +31,10 @@ class PokemonHeldItemsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PokeHeldItems
-        fields = ("name", "order",)
+        fields = (
+            "name",
+            "order",
+        )
 
     def get_name(self, obj):
         return obj.heldItem.name
@@ -36,7 +45,10 @@ class PokemonTypeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PokeTypes
-        fields = ("name", "order",)
+        fields = (
+            "name",
+            "order",
+        )
 
     def get_name(self, obj):
         return obj.type.name

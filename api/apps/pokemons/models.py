@@ -14,7 +14,7 @@ class Pokemon(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'Pokemon'
+        verbose_name_plural = "Pokemon"
 
 
 # all the items that can be held by a pokemon
@@ -25,7 +25,7 @@ class HeldItems(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'HeldItems'
+        verbose_name_plural = "HeldItems"
 
 
 # all the abilities that the pokemon can have
@@ -36,7 +36,7 @@ class Abilities(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'Abilities'
+        verbose_name_plural = "Abilities"
 
 
 # all the types of pokemon
@@ -47,48 +47,54 @@ class Types(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'Types'
+        verbose_name_plural = "Types"
 
 
 # the statistics of a pokemon
 class PokeStats(models.Model):
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
-    baseStat = models.FloatField(default=0)
+    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="stats")
+    base_stat = models.FloatField(default=0)
     effort = models.FloatField(default=0)
-    name = models.CharField(max_length=20, default='')
+    name = models.CharField(max_length=20, default="")
 
     class Meta:
-        verbose_name_plural = 'PokeStats'
+        verbose_name_plural = "PokeStats"
 
 
 # the evolution of a pokemon
 class PokeEvolutions(models.Model):
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="evolutions")
+    pokemon = models.ForeignKey(
+        Pokemon, on_delete=models.CASCADE, related_name="evolutions"
+    )
     name = models.CharField(max_length=20)
     order = models.PositiveIntegerField()
 
     class Meta:
-        verbose_name_plural = 'PokeEvolutions'
+        verbose_name_plural = "PokeEvolutions"
 
 
 # abilities of a single pokemon is in here
 class PokeAbilities(models.Model):
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="abilities")
+    pokemon = models.ForeignKey(
+        Pokemon, on_delete=models.CASCADE, related_name="abilities"
+    )
     ability = models.ForeignKey(Abilities, on_delete=models.CASCADE)
     order = models.PositiveIntegerField()
 
     class Meta:
-        verbose_name_plural = 'PokeAbilities'
+        verbose_name_plural = "PokeAbilities"
 
 
 # held items of a single pokemon is in here
 class PokeHeldItems(models.Model):
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="held_items")
+    pokemon = models.ForeignKey(
+        Pokemon, on_delete=models.CASCADE, related_name="held_items"
+    )
     heldItem = models.ForeignKey(HeldItems, on_delete=models.CASCADE)
     order = models.PositiveIntegerField()
 
     class Meta:
-        verbose_name_plural = 'PokeHeldItems'
+        verbose_name_plural = "PokeHeldItems"
 
 
 # types of a single pokemon is in here
@@ -98,4 +104,4 @@ class PokeTypes(models.Model):
     order = models.PositiveIntegerField()
 
     class Meta:
-        verbose_name_plural = 'PokeTypes'
+        verbose_name_plural = "PokeTypes"
