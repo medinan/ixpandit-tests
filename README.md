@@ -95,10 +95,10 @@ They come out of the release to which they correspond and merge against it.
 # Pending and improvements
 
 1. automatic logic testing.
-2Pokemon Card css.
-3Add pokemon detail.
-4Add more search methods.
-5add more pokemon information.
+2. Pokemon Card css.
+3. Add pokemon detail.
+4. Add more search methods.
+5. add more pokemon information.
 
 
 
